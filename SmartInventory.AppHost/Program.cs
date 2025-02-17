@@ -1,5 +1,5 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.SmartInventoryAPI>("smartinventoryapi");
+builder.AddProject<Projects.SmartInventory_API>("smartinventoryapi");
 
 builder.Build().Run();
