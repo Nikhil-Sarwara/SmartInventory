@@ -1,8 +1,13 @@
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SmartInventoryAPI.Data;
 using SmartInventoryAPI.ExtensionMethods;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using SmartInventory.API.Models;
 
 namespace SmartInventoryAPI;
 
@@ -23,6 +28,36 @@ public class Program
         // Configure PostgreSQL
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+        // Add Identity
+        builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
+
+        // Configure JWT Authentication
+        _ = builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false;
+            options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(s: builder.Configuration["Jwt:Key"])),
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                ValidAudience = builder.Configuration["Jwt:Audience"],
+                ClockSkew = TimeSpan.Zero
+            };
+        });
+
+        // Add Authorization
+        builder.Services.AddAuthorization();
 
         var app = builder.Build();
 
