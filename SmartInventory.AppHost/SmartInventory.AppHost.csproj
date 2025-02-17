@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SmartInventoryAPI\SmartInventory.API.csproj" />
+    <ProjectReference Include="..\SmartInventory.API\SmartInventory.API.csproj" />
   </ItemGroup>
 
 </Project>

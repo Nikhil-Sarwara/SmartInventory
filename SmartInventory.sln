@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInventory.AppHost", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInventory.ServiceDefaults", "SmartInventory.ServiceDefaults\SmartInventory.ServiceDefaults.csproj", "{5A19D70B-1D4F-8DEF-EDDC-0041FF7A2CFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInventoryAPI", "SmartInventoryAPI\SmartInventoryAPI.csproj", "{23A6D59C-C120-8B33-7E75-6B29577A13F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInventory.API", "SmartInventoryAPI\SmartInventory.API.csproj", "{23A6D59C-C120-8B33-7E75-6B29577A13F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
