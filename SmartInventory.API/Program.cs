@@ -59,6 +59,16 @@ public class Program
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowReactApp", builder =>
+            {
+                builder.WithOrigins("http://localhost:59612") // The React development URL
+                       .AllowAnyHeader()
+                       .AllowAnyMethod();
+            });
+        });
+
         // Configure JWT Authentication
         _ = builder.Services.AddAuthentication(options =>
         {
@@ -98,7 +108,7 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-
+        app.UseCors("AllowReactApp");
         app.UseAuthorization();
 
 
