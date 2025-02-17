@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using SmartInventoryAPI.Data;
+using SmartInventoryAPI.ExtensionMethods;
 using System;
 
 namespace SmartInventoryAPI;
@@ -25,6 +26,8 @@ public class Program
 
         var app = builder.Build();
 
+        // Check and apply database migrations
+        app.CheckAndMigrateDatabase();
         app.MapDefaultEndpoints();
 
         // Configure the HTTP request pipeline.
