@@ -9,10 +9,10 @@ using SmartInventoryAPI.Data;
 
 #nullable disable
 
-namespace SmartInventoryAPI.Migrations
+namespace SmartInventory.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250217021911_InitialCreate")]
+    [Migration("20250217173320_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,6 +25,28 @@ namespace SmartInventoryAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("SmartInventoryAPI.Models.InventoryGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InventoryGroups");
+                });
+
             modelBuilder.Entity("SmartInventoryAPI.Models.InventoryItem", b =>
                 {
                     b.Property<int>("Id")
@@ -33,19 +55,36 @@ namespace SmartInventoryAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("GroupId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("LastUpdated")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GroupId");
+
                     b.ToTable("Inventory");
+                });
+
+            modelBuilder.Entity("SmartInventoryAPI.Models.InventoryItem", b =>
+                {
+                    b.HasOne("SmartInventoryAPI.Models.InventoryGroup", "InventoryGroup")
+                        .WithMany()
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("InventoryGroup");
                 });
 #pragma warning restore 612, 618
         }
