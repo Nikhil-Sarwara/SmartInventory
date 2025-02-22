@@ -1,9 +1,4 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+/* 
 
 .logo {
   height: 6em;
@@ -34,9 +29,88 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 5em;
+  
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 20px;
+}
+
+.auth-box {
+  width: 100%;
+  
+}
+
+.auth-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.toggle-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #764ba2;
+  transition: color 0.3s ease-in-out;
+}
+
+.toggle-btn:hover {
+  color: #667eea;
+} */
+
+/* Centering the authentication container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 100%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+.auth-box {
+  width: 50vh;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.toggle-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #764ba2;
+  transition: color 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.toggle-btn:hover {
+  color: #667eea;
 }

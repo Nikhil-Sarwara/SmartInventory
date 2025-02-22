@@ -1,0 +1,17 @@
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .btn-outline-light {
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar .btn-outline-light:hover {
+    background: white;
+    color: black;
+}
