@@ -1,0 +1,25 @@
+.hero-section {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero-section .lead {
+    font-size: 1.25rem;
+}
+
+.hero-section .alert {
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+}

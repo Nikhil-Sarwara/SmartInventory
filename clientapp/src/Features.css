@@ -1,0 +1,29 @@
+.features-section {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.features-section h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.features-section .card {
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.features-section .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.features-section .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.features-section .card-text {
+    color: #666;
+}
